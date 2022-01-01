@@ -10,6 +10,7 @@ import RiderProfile from './components/RiderProfile/RiderProfile';
 import Services from './components/Services/Services';
 import Navigation from './components/Shared/Navigation/Navigation';
 import AdminPanel from './components/AdminPanel/AdminPanel';
+import Booking from './components/Booking/Booking';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
             <Route path='/services' element={<Services></Services>}>
             </Route>
             <Route path='/adminPanel' element={<AdminPanel></AdminPanel>}>
+            </Route>
+            <Route path='/selectedservice/:serviceId' element={<Booking></Booking>}>
             </Route>
           </Routes>
         </Router>

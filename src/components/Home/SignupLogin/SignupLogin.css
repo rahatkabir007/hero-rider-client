@@ -1,10 +1,18 @@
 .signup-login-section a {
     text-decoration: none;
-    color: black;
     font-size: 40px;
-    background-color: black;
-    color: white;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
     padding: 3rem 4rem;
+   
+}
+.signup{
+  margin-top: 3rem;
+  transition: 0.7s;
+}
+.signup:hover{
+  transform: scale(1.05);
 }
 
 /* Mobile device */
