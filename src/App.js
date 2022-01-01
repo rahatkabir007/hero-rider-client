@@ -11,6 +11,7 @@ import Services from './components/Services/Services';
 import Navigation from './components/Shared/Navigation/Navigation';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Booking from './components/Booking/Booking';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -29,13 +30,15 @@ function App() {
             </Route>
             <Route path='/learnerSignup' element={<LearnerSignUp></LearnerSignUp>}>
             </Route>
-            <Route path='/riderProfile' element={<RiderProfile></RiderProfile>}>
+            <Route path='/riderProfile' element={<PrivateRoute>
+              <RiderProfile />
+            </PrivateRoute>}>
             </Route>
             <Route path='/services' element={<Services></Services>}>
             </Route>
             <Route path='/adminPanel' element={<AdminPanel></AdminPanel>}>
             </Route>
-            <Route path='/selectedservice/:serviceId' element={<Booking></Booking>}>
+            <Route path='/selectedservice/:serviceId' element={<PrivateRoute><Booking></Booking></PrivateRoute>}>
             </Route>
           </Routes>
         </Router>
