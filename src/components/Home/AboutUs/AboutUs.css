@@ -1,0 +1,38 @@
+/* .left-about {
+    width: 50%;
+} */
+.right-about{
+    text-align: left;
+    width: 50% ;
+    font-size: 30px;
+}
+.right-about h1{
+    font-size: 50px;
+    margin-bottom: 2rem;
+    
+}
+.right-about p{
+line-height: 55px;
+}
+/* Mobile device */
+@media only screen and (max-width:688px){
+    .left-about img{
+        width: 70%;
+    }
+    .right-about{
+        text-align: center;
+        font-size: 20px;
+        width: 75%;
+        margin: 2rem auto 0 auto;
+    }
+    .right-about h1 {
+        font-size: 40px;
+        margin-bottom: 2rem;
+
+    }
+
+    .right-about p {
+        line-height: 45px;
+    }
+    
+}

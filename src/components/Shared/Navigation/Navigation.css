@@ -1,0 +1,39 @@
+.nav-container{
+    background-color: black;
+    color: white;
+  
+}
+/* .right-side{
+
+} */
+.right-side a {
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 20px;
+    color: white !important;
+  
+}
+.navbar-toggler{
+    background-color: white;
+}
+
+/* Mobile device */
+@media only screen and (max-width:688px){
+    .hidden-nav{
+        margin-bottom: 1rem;
+    }
+    .right-side a {
+        margin: 0 auto;
+    }
+
+    .hidden-nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #username {
+        margin: 2px auto;
+        border-right: none;
+        padding-right: 0;
+    }
+}

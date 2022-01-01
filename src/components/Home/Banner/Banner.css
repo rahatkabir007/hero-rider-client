@@ -1,0 +1,62 @@
+.banner-section {
+    height: 70vh;
+    background-color: black;
+    color: white;
+}
+
+.banner-intro {
+    position: relative;
+    top: 10rem;
+    line-height: 35px;
+}
+
+.banner-intro h1 {
+    font-size: 80px;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.banner-intro h4 {
+    color: gray;
+    margin-bottom: 3rem;
+}
+
+.banner-intro a {
+    color: black;
+    background-color: white;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.6s;
+}
+.banner-intro a:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+/* Mobile device */
+@media only screen and (max-width:688px){
+    .banner-section {
+        height: 50vh;
+       
+    }
+
+    .banner-intro {
+        position: relative;
+        top: 4rem;
+    
+    }
+
+    .banner-intro h1 {
+        font-size: 50px;
+       
+    }
+
+    .banner-intro h4 {
+        font-size: 1rem;
+     
+    }
+
+}
