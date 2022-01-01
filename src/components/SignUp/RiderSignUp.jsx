@@ -1,20 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import './SignUp.css';
 import useAuth from '../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
 import signup from '../../images/signup.jpg';
+import axios from 'axios';
 
 const RiderSignUp = () => {
-    const { signUpUser } = useAuth()
+    const { signUpUser,authError } = useAuth();
+    const [error, setError] = useState('')
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
+    const [license, setLicense] = useState("");
+    const [nid, setNid] = useState("");
+    const [profile, setProfile] = useState("");
+
     const onSubmit = data => {
+        if (data.password.length < 6) {
+            setError(<h6 className="text-danger mt-3 text-center">Password must be at least 6 characters</h6>)
+            return
+        }
+        else if (data.password !== data.password2) {
+            setError(<h6 className="text-danger mt-3 text-center">Password does not match</h6>)
+            return
+        }
+        else if (authError) {
+            setError(<h6 className="text-danger mt-3 text-center">Email already in use</h6>)
+        }
+        else {
+            setError('')
+        }
         data.role = 'rider';
+        data.drivingLicense = license;
+        data.nid = nid;
+        data.profilePicture = profile;
         signUpUser(data.email, data.password, data.name, data, navigate)
         reset();
     };
+
+    const handleLicenseUpload = (event) => {
+        const imgData = new FormData()
+        imgData.set("key", "fe1fc1f2ca4647c6d6e78e6cca75b757")
+        imgData.append("image", event.target.files[0])
+        axios.post('https://api.imgbb.com/1/upload', imgData)
+            .then(res => setLicense(res.data.data.display_url))
+    }
+    const handleNidUpload = (event) => {
+        const imgData = new FormData()
+        imgData.set("key", "fe1fc1f2ca4647c6d6e78e6cca75b757")
+        imgData.append("image", event.target.files[0])
+        axios.post('https://api.imgbb.com/1/upload', imgData)
+            .then(res => setNid(res.data.data.display_url))
+    }
+    const handleProfileUpload = (event) => {
+        const imgData = new FormData()
+        imgData.set("key", "fe1fc1f2ca4647c6d6e78e6cca75b757")
+        imgData.append("image", event.target.files[0])
+        axios.post('https://api.imgbb.com/1/upload', imgData)
+            .then(res => setProfile(res.data.data.display_url))
+    }
+
+
 
     return (
         <>
@@ -36,14 +83,21 @@ const RiderSignUp = () => {
                         />
                         <input type="tel" placeholder='Phone Number'{...register("phone", { required: true })}
                         />
-                        <input type="text" placeholder='Driving License Picture URL'{...register("drivingLicense", { required: true })}
+                        {/* <input type="text" placeholder='Driving License Picture URL'{...register("drivingLicense", { required: true })}
+                        /> */}
+                        {/* <label>Driving License</label> */}
+                        <input placeholder='Driving License' type="file" {...register("drivingLicense", { required: true })} className="form-control mb-3"
+                            onChange={handleLicenseUpload}
                         />
                         <input type="text" placeholder='Area'{...register("area", { required: true })}
                         />
-                        <input type="text" placeholder='Nid Pic Url'{...register("nid", { required: true })}
-                        />
-                        <input type="text" placeholder='Profile Picture url'{...register("profilePicture", { required: true })}
-                        />
+                        {/* <input type="text" placeholder='Nid Pic Url'{...register("nid", { required: true })}
+                        /> */}
+                        <input type="file" {...register("nid", { required: true })} className="form-control mb-3" onChange={handleNidUpload} />
+
+                        {/* <input type="text" placeholder='Profile Picture url'{...register("profilePicture", { required: true })}
+                        /> */}
+                        <input type="file" {...register("profilePicture", { required: true })} className="form-control mb-3" onChange={handleProfileUpload} />
                         <input type="text" placeholder='Car Information'{...register("carInfo", { required: true })}
                         />
                         <input type="password" placeholder='Password' {...register("password", { required: true })}
@@ -55,6 +109,7 @@ const RiderSignUp = () => {
                                 <option value="car">Car</option>
                                 <option value="bike">Bike</option>
                             </select>
+                            {error}
                             <input id="register" type="submit" style={{
                                 width: "100%", color: "white",
                                 outline: 'none',

@@ -31,7 +31,7 @@ const Navigation = () => {
                                             <NavLink to='/login' >
                                                 Login
                                             </NavLink>
-                                            <HashLink  to='/home#signuplogin'>
+                                            <HashLink as to='/home#signuplogin'>
                                                 Sign Up
                                             </HashLink>
                                         </>

@@ -12,6 +12,7 @@ import Navigation from './components/Shared/Navigation/Navigation';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Booking from './components/Booking/Booking';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AdminRoute from './components/AdminRoute/AdminRoute';
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
             </Route>
             <Route path='/services' element={<Services></Services>}>
             </Route>
-            <Route path='/adminPanel' element={<AdminPanel></AdminPanel>}>
+            <Route path='/adminPanel' element={<AdminRoute><AdminPanel></AdminPanel></AdminRoute>}>
             </Route>
             <Route path='/selectedservice/:serviceId' element={<PrivateRoute><Booking></Booking></PrivateRoute>}>
             </Route>

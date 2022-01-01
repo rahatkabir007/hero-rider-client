@@ -9,6 +9,7 @@ const RiderProfile = () => {
         fetch(`http://localhost:5000/users/${user?.email}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setRider(data)
             })
     }, [])
@@ -19,7 +20,7 @@ const RiderProfile = () => {
             <div className="row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8 shadow-lg rounded-3 p-5">
-                    <img src={rider?.profileImg} alt="" width="150px" height="150px" className="mx-auto rounded-circle mb-3 shadow-lg" />
+                    <img src={rider?.profilePicture} alt="" width="150px" height="150px" className="mx-auto rounded-circle mb-3 shadow-lg" />
                     <div className="row">
                         <div className="col-md-3 ps-3">
                             <div className="text-start ps-3">
@@ -39,7 +40,7 @@ const RiderProfile = () => {
                                 <h4>: {rider?.phone}</h4>
                                 <h4>: {rider?.address}</h4>
                                 <h4>: {rider?.age} years</h4>
-                                <h4>: {rider?.vehicle}</h4>
+                                <h4>: {rider?.vehicleType}</h4>
                                 <h4>: {rider?.carInfo}</h4>
                             </div>
                         </div>

@@ -9,8 +9,15 @@ const Services = () => {
     const { user } = useAuth();
     const [learner, setLearner] = useState({});
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/savedUsers/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setLearner(data)
+            })
+    },
+        [])
 
-    
     useEffect(() => {
         fetch('http://localhost:5000/services')
             .then(res => res.json())
@@ -24,23 +31,30 @@ const Services = () => {
         <div className="services-section py-3 my-2">
             <h1>Our Services</h1>
             <Container>
-                <div className="services" >
-                    {
-                        services.map(service =>
-                            <div className="service-card">
-                                <div className="service-icon">
-                                    <i className={service.img}></i>
-                                </div>
-                                <div className="service-details">
-                                    <h1>{service.title}</h1>
-                                    <h5>Price: {service.price}$</h5>
-                                    <Link to={`/selectedservice/${service?._id}`}><button className='booking-btn'>Book Now</button> </Link>
-                                </div>
-                            </div>
-                        )
-                    }
+                {
+                    learner.status === 'blocked'? 
+                        <div>
+                            <h3 className="text-uppercase my-5 text-danger">Your account is blocked</h3>
+                        </div>
+                        :
+                        <div className="services" >
+                            {
+                                services.map(service =>
+                                    <div className="service-card">
+                                        <div className="service-icon">
+                                            <i className={service.img}></i>
+                                        </div>
+                                        <div className="service-details">
+                                            <h1>{service.title}</h1>
+                                            <h5>Price: {service.price}$</h5>
+                                            <Link to={`/selectedservice/${service?._id}`}><button className='booking-btn'>Book Now</button> </Link>
+                                        </div>
+                                    </div>
+                                )
+                            }
 
-                </div>
+                        </div>
+                }
             </Container>
         </div>
     );

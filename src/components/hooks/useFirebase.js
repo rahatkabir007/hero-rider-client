@@ -61,10 +61,22 @@ const useFirebase = () => {
                     .then(data => {
                         console.log(data)
                         if (data?.role === "rider") {
-                            navigate("/riderProfile")
+                            if (data.status) {
+                                alert("Sorry, your account is blocked by the admin")
+                                return;
+                            }
+                            else {
+                                navigate("/riderProfile")
+                            }
                         }
                         else if (data?.role === "learner") {
-                            navigate("/services")
+                            if (data.status) {
+                                alert("Sorry, your account is blocked by the admin")
+                                return;
+                            }
+                            else {
+                                navigate("/services")
+                            }
                         }
                         else if (data?.role === 'admin') {
                             navigate("/adminPanel")
