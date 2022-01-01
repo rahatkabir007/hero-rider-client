@@ -83,20 +83,16 @@ const RiderSignUp = () => {
                         />
                         <input type="tel" placeholder='Phone Number'{...register("phone", { required: true })}
                         />
-                        {/* <input type="text" placeholder='Driving License Picture URL'{...register("drivingLicense", { required: true })}
-                        /> */}
-                        {/* <label>Driving License</label> */}
+                        <label className='mt-1' style={{fontSize: '20px',fontWeight: '600'}}>Driving License Picture</label>
                         <input placeholder='Driving License' type="file" {...register("drivingLicense", { required: true })} className="form-control mb-3"
                             onChange={handleLicenseUpload}
                         />
                         <input type="text" placeholder='Area'{...register("area", { required: true })}
                         />
-                        {/* <input type="text" placeholder='Nid Pic Url'{...register("nid", { required: true })}
-                        /> */}
+                        <label className='mt-1' style={{ fontSize: '20px', fontWeight: '600' }}>NID Picture Picture</label>
                         <input type="file" {...register("nid", { required: true })} className="form-control mb-3" onChange={handleNidUpload} />
 
-                        {/* <input type="text" placeholder='Profile Picture url'{...register("profilePicture", { required: true })}
-                        /> */}
+                        <label className='mt-1' style={{ fontSize: '20px', fontWeight: '600' }}>Profile Picture</label>
                         <input type="file" {...register("profilePicture", { required: true })} className="form-control mb-3" onChange={handleProfileUpload} />
                         <input type="text" placeholder='Car Information'{...register("carInfo", { required: true })}
                         />
@@ -123,7 +119,7 @@ const RiderSignUp = () => {
                         </div>
                         
                     </form>
-                    <div> 
+                    <div className='mb-5'> 
                         <h5>Already an User? <Link to='/login' style={{ textDecoration: 'none', color: 'black' }}>Login</Link></h5>
                     </div>
                    

@@ -1,0 +1,55 @@
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box; 
+}
+
+.second-section {
+    padding-top: 15px;
+}
+
+.list-items ul li {
+    list-style-type: none;
+    text-align: left;
+    padding: 5px;
+}
+
+.list-items ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.list-items ul li a:hover {
+    color: white;
+}
+
+.contact-us ul li {
+     color: white;
+    list-style-type: none;
+    text-align: left;
+    padding: 5px;
+}
+.contact-us ul li:hover {
+     color: white;
+}
+.subscribe {
+    text-align: left;
+    padding: 5px 5px 5px 32px;
+}
+
+.copyright-text {
+    color: white;
+    font-size: 10px;
+    margin-top: 10px;
+}
+.payment img{
+    padding: 10px 5px 5px 32px;
+}
+/* Mobile device */
+@media only screen and (max-width:688px) {
+    .subscribe {
+       width: 50%;
+    }
+}

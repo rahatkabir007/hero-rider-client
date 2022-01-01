@@ -5,7 +5,7 @@ import './AboutUs.css';
 const AboutUs = () => {
     return (
         <Container>
-            <div className='about-section d-lg-flex align-items-center justify-content-between my-4 py-5'>
+            <div id="about" className='about-section d-lg-flex align-items-center justify-content-between my-4 py-5'>
                 <div className="left-about">
                     <img src={about} alt="" />
                 </div>

@@ -1,0 +1,32 @@
+.main2 {
+    width: 50%;
+    margin: 0 auto;
+}
+.banner img{
+    width: 100%;
+}
+
+/* Mobile device */
+@media only screen and (max-width:688px) {
+    .main2 {
+        width: 100%;
+        margin: 0px 0px;
+    }
+
+    .banner img {
+        width: 80%;
+    }
+}
+
+
+/* Tab */
+@media only screen and (min-width: 688px) and (max-width: 992px) {
+    .main2 {
+        width: 100%;
+        margin: 0px 0px;
+    }
+
+    .banner img {
+        width: 80%;
+    }
+}

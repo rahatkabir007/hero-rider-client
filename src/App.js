@@ -9,8 +9,10 @@ import RiderSignUp from './components/SignUp/RiderSignUp';
 import RiderProfile from './components/RiderProfile/RiderProfile';
 import Services from './components/Services/Services';
 import Navigation from './components/Shared/Navigation/Navigation';
+import Footer from './components/Shared/Footer/Footer';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Booking from './components/Booking/Booking';
+import NotFound from './components/notFound/NotFound';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AdminRoute from './components/AdminRoute/AdminRoute';
 
@@ -41,8 +43,12 @@ function App() {
             </Route>
             <Route path='/selectedservice/:serviceId' element={<PrivateRoute><Booking></Booking></PrivateRoute>}>
             </Route>
+            <Route path='*' element={<NotFound/>}>
+            </Route>
           </Routes>
+          <Footer></Footer>
         </Router>
+      
       </AuthProvider>
     </div>
    

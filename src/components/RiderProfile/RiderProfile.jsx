@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 const RiderProfile = () => {
     const { user } = useAuth();
     const [rider, setRider] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`https://salty-mountain-15032.herokuapp.com/users/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -47,12 +46,6 @@ const RiderProfile = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-md-2"></div>
-            <Link to='/home'>
-                <button className="btn btn-outline-dark mt-3">
-                    Back to Home
-                </button>
-            </Link>
         </div >
     );
 };

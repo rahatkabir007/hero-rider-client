@@ -3,7 +3,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 import './Navigation.css';
 import useAuth from '../../hooks/useAuth';
 import { NavLink } from 'react-router-dom';
-import {HashLink} from 'react-router-hash-link';
+import { HashLink } from 'react-router-hash-link';
 
 const Navigation = () => {
     const { user, admin, logOut } = useAuth();
@@ -11,13 +11,14 @@ const Navigation = () => {
         <>
             <Navbar collapseOnSelect expand="lg" className="nav-container">
                 <Container>
-                    <Navbar.Brand ><NavLink to='/home' style={{ color: 'white', fontSize: '30px', fontWeight: 'bold',textDecoration: 'none' }}>Hero Rider</NavLink></Navbar.Brand>
+                    <Navbar.Brand ><NavLink to='/home' style={{ color: 'white', fontSize: '30px', fontWeight: 'bold', textDecoration: 'none' }}>Hero Rider</NavLink></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto right-side">
                             {
                                 admin ? <div className="hidden-nav">
                                     <span style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }} id="username">Welcome, {user?.displayName}</span>
+                                    <NavLink to='/home'>Home</NavLink>
                                     <NavLink to='/adminPanel'>Admin Panel</NavLink>
                                     <NavLink onClick={logOut} to='/home'>Logout</NavLink>
                                 </div>
@@ -25,9 +26,11 @@ const Navigation = () => {
                                     user?.email ?
                                         <div className="hidden-nav">
                                             <span style={{ textDecoration: 'none', color: 'white', fontSize: '20px' }} id="username">Welcome, {user?.displayName}</span>
+                                            <NavLink to='/home'>Home</NavLink>
                                             <NavLink onClick={logOut} to='/home'>Logout</NavLink>
                                         </div> :
                                         <>
+                                            <NavLink to='/home'>Home</NavLink>
                                             <NavLink to='/login' >
                                                 Login
                                             </NavLink>

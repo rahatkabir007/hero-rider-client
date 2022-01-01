@@ -11,7 +11,7 @@ const Booking = () => {
     const { serviceId } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/selectedservice/${serviceId}`)
+        fetch(`https://salty-mountain-15032.herokuapp.com/selectedservice/${serviceId}`)
             .then(res => res.json())
             .then(data => setserviceDetails(data));
     }, [serviceId])
@@ -28,7 +28,7 @@ const Booking = () => {
                             <div className="service-details text-start">
                                 <h1>{serviceDetails.title}</h1>
                                 <h5>Price: {serviceDetails.price}$</h5>
-                               
+
                             </div>
                         </div>
                     }
@@ -37,11 +37,11 @@ const Booking = () => {
                             serviceDetails={serviceDetails}
                         />
                     </Elements>}
-                    
-                    </div>
-               
+
+                </div>
+
             </div>
-           
+
         </div>
     );
 };

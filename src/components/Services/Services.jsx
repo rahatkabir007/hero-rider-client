@@ -10,7 +10,7 @@ const Services = () => {
     const [learner, setLearner] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/savedUsers/${user?.email}`)
+        fetch(`https://salty-mountain-15032.herokuapp.com/savedUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setLearner(data)
@@ -19,7 +19,7 @@ const Services = () => {
         [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://salty-mountain-15032.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -32,7 +32,7 @@ const Services = () => {
             <h1>Our Services</h1>
             <Container>
                 {
-                    learner.status === 'blocked'? 
+                    learner.status === 'blocked' ?
                         <div>
                             <h3 className="text-uppercase my-5 text-danger">Your account is blocked</h3>
                         </div>

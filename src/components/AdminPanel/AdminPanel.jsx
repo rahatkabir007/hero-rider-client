@@ -13,7 +13,7 @@ const AdminPanel = () => {
     const size = 10;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allUser?page=${page}&&size=${size}`)
+        fetch(`https://salty-mountain-15032.herokuapp.com/allUser?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setAllUsers(data.result)
@@ -59,12 +59,12 @@ const AdminPanel = () => {
     const [operator, setOperator] = useState({});
 
     const handleCheck = (id) => {
-        fetch(`http://localhost:5000/allUser/${id}`)
+        fetch(`https://salty-mountain-15032.herokuapp.com/allUser/${id}`)
             .then((res) => res.json())
             .then((data) => setOperator(data));
         setOperator(operator.status = "blocked");
 
-        fetch(`http://localhost:5000/allUser/${id}`, {
+        fetch(`https://salty-mountain-15032.herokuapp.com/allUser/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(operator),
@@ -80,17 +80,12 @@ const AdminPanel = () => {
 
     return (
         <div className="container">
-            <div className="d-flex align-items-center">
-                <Link to='/home'>
-                    <button className="btn btn-outline-dark">
-                        <i className="fas fa-arrow-circle-left"></i>
-                    </button>
-                </Link>
+            <div>
                 <h1 className="text-center my-4 mx-auto">{user?.displayName}'s Dashboard</h1>
             </div>
 
             <div className="search-container">
-                <input type="text"
+                <input style={{height: '70px'}} type="text"
                     className="form-control w-50 mx-auto"
                     onChange={handleSearch}
                     placeholder="Search user..." />
@@ -105,44 +100,45 @@ const AdminPanel = () => {
             </div>
 
             <div className="row">
-                <div className="col-md-2"></div>
-                <div className="col-md-8">
                     {
-                        displayUsers.filter(allUser => allUser.role !== 'admin').map(user => <div className="card mb-5">
-                            <div className="row g-0">
-                                <div className="col-md-4">
-                                    <img src={user?.profilePicture} className="rounded-start" height="250px" width="220px" alt="..." />
-                                </div>
-                                <div className="col-md-8 shadow-lg">
-                                    <div className="card-body bg-light ">
-                                        <h5 className="card-title fw-bold">
-                                            Name: {user?.name} {user?.status &&
-                                                <span className="card-title fs-6">({user?.status})</span>
-                                            }
+                        displayUsers.filter(allUser => allUser.role !== 'admin').map(user =>
+                            
+                                <div class="col-lg-6">
+                                <div class="card my-3 mx-auto" style={{ width: '18rem' }} >
+                                    <img src={user?.profilePicture} style={{ height: '18rem' }} className="rounded-start" class="card-img-top" alt="..."/>
+                                            <div class="card-body">
+                                            <h5 className="card-title fw-bold">
+                                                Name: {user?.name} {user?.status &&
+                                                    <span className="card-title fs-6">({user?.status})</span>
+                                                }
 
-                                        </h5>
-                                        <h5 className="card-title">Email: {user?.email}</h5>
-                                        <h5 className="card-title">Phone: {user?.phone}</h5>
-                                        <h5 className="card-title">Age: {user?.age} years</h5>
-                                        <h5 className="card-title">Vehicle: {user?.vehicleType}</h5>
-                                        <h5 className="card-title">User: {user?.role}</h5>
-                                        <span className="d-flex align-items-center">
-                                            <input type="checkbox" className="me-2"
-                                                onChange={() => handleCheck(`${user?._id}`)} />
-                                            Block user
-                                        </span>
+                                            </h5>
+                                            <h5 className="card-title">Email: {user?.email}</h5>
+                                            <h5 className="card-title">Phone: {user?.phone}</h5>
+                                            <h5 className="card-title">Age: {user?.age} years</h5>
+                                            <h5 className="card-title">Vehicle: {user?.vehicleType}</h5>
+                                            <h5 className="card-title">User: {user?.role}</h5>
+                                            <span className="d-flex align-items-center">
+                                                <input type="checkbox" className="me-2"
+                                                    onChange={() => handleCheck(`${user?._id}`)} />
+                                                Block user
+                                            </span>
+                                            </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>)
+                            
+
+
+                           
+                        )
                     }
-                </div>
-                <div className="col-md-2"></div>
+               
+                
             </div>
-            <div className="pagination">
+            <div className="pagination text-center">
                 {
                     [...Array(pageCount).keys()]
-                        .map(number => <button key={number} onClick={() => setPage(number)} className={page === number ? "selected" : ""}>{number + 1}
+                        .map(number => <button style={{backgroundColor: 'black'}} key={number} onClick={() => setPage(number)} className={page === number ? "selected" : ""}>{number + 1}
                         </button>)
                 }
             </div>

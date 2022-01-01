@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import './SignUp.css';
 import signup from '../../images/signup.jpg';
@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 const LearnerSignUp = () => {
-    const { signUpUser,authError } = useAuth()
+    const { signUpUser, authError } = useAuth()
     const [error, setError] = useState('')
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -70,12 +70,11 @@ const LearnerSignUp = () => {
                         />
                         <input type="tel" placeholder='Phone Number'{...register("phone", { required: true })}
                         />
+                        <label className='mt-1' style={{ fontSize: '20px', fontWeight: '600' }}>Profile Picture</label>
                         <input type="file" {...register("profileImg", { required: true })} className="form-control mb-3" onChange={handleProfileUpload} />
+                        <label className='mt-1' style={{ fontSize: '20px', fontWeight: '600' }}>NID Picture Picture</label>
                         <input type="file" {...register("nid", { required: true })} className="form-control mb-3" onChange={handleNidUpload} />
-                        {/* <input type="text" placeholder='Profile Picture url'{...register("profilePicture", { required: true })}
-                        /> */}
-                        {/* <input type="text" placeholder='Nid Pic Url'{...register("nid", { required: true })}
-                        /> */}
+
                         <input type="password" placeholder='Password' {...register("password", { required: true })}
                         />
                         <input type="password" placeholder='Confirm Password' {...register("password2", { required: true })}

@@ -56,7 +56,7 @@ const useFirebase = () => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                fetch(`http://localhost:5000/users/${email}`)
+                fetch(`https://salty-mountain-15032.herokuapp.com/users/${email}`)
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
@@ -118,7 +118,7 @@ const useFirebase = () => {
     }
 
     const saveUser = (data, method) => {
-        fetch('http://localhost:5000/users', {
+        fetch('https://salty-mountain-15032.herokuapp.com/users', {
             method: method,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -128,7 +128,7 @@ const useFirebase = () => {
     }
     // check admin or not
     useEffect(() => {
-        fetch(`http://localhost:5000/savedUsers/${user?.email}`)
+        fetch(`https://salty-mountain-15032.herokuapp.com/savedUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin)

@@ -14,7 +14,7 @@ const CheckOutForm = ({ serviceDetails }) => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-checkout-session', {
+        fetch('https://salty-mountain-15032.herokuapp.com/create-checkout-session', {
             method: 'POST',
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ price })
@@ -77,7 +77,7 @@ const CheckOutForm = ({ serviceDetails }) => {
                 last4: paymentMethod.card.last4,
                 transaction: paymentIntent.client_secret.slice('_secret')[0]
             }
-            const url = `http://localhost:5000/services/${_id}`;
+            const url = `https://salty-mountain-15032.herokuapp.com/services/${_id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -91,7 +91,7 @@ const CheckOutForm = ({ serviceDetails }) => {
         }
 
     }
-    
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -113,7 +113,7 @@ const CheckOutForm = ({ serviceDetails }) => {
                 />
                 {processing ? <div className="spinner-border" role="status">
                     <span className="visually-hidden">Loading...</span>
-                </div> : <button type="submit" className="booknow-btn my-2"disabled={!stripe || success}>
+                </div> : <button type="submit" className="booknow-btn my-2" disabled={!stripe || success}>
                     PAY ${price}
                 </button>}
             </form>
