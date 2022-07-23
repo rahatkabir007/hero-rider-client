@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <div className="footer d-flex flex-column ">
             <div className="my-3">
-                <h1>CARGET</h1><hr/>
+                <h1>HERO RIDER</h1><hr/>
             </div>
             <div className="d-md-flex justify-content-around align-items-center second-section">
                 <div className="list-items">

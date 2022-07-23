@@ -38,14 +38,14 @@ const LearnerSignUp = () => {
     };
     const handleNidUpload = (event) => {
         const imgData = new FormData()
-        imgData.set("key", "fe1fc1f2ca4647c6d6e78e6cca75b757")
+        imgData.set("key", "11b44d46ea6e3a1cff61f7cabe71c172")
         imgData.append("image", event.target.files[0])
         axios.post('https://api.imgbb.com/1/upload', imgData)
             .then(res => setNid(res.data.data.display_url))
     }
     const handleProfileUpload = (event) => {
         const imgData = new FormData()
-        imgData.set("key", "fe1fc1f2ca4647c6d6e78e6cca75b757")
+        imgData.set("key", "11b44d46ea6e3a1cff61f7cabe71c172")
         imgData.append("image", event.target.files[0])
         axios.post('https://api.imgbb.com/1/upload', imgData)
             .then(res => setProfile(res.data.data.display_url))
