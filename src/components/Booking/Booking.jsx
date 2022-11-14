@@ -11,7 +11,7 @@ const Booking = () => {
     const { serviceId } = useParams();
 
     useEffect(() => {
-        fetch(`https://salty-mountain-15032.herokuapp.com/selectedservice/${serviceId}`)
+        fetch(`https://hero-rider-server-production.up.railway.app/selectedservice/${serviceId}`)
             .then(res => res.json())
             .then(data => setserviceDetails(data));
     }, [serviceId])

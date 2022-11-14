@@ -10,7 +10,7 @@ const Services = () => {
     const [learner, setLearner] = useState({});
 
     useEffect(() => {
-        fetch(`https://salty-mountain-15032.herokuapp.com/savedUsers/${user?.email}`)
+        fetch(`https://hero-rider-server-production.up.railway.app/savedUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setLearner(data)
@@ -19,7 +19,7 @@ const Services = () => {
         [])
 
     useEffect(() => {
-        fetch('https://salty-mountain-15032.herokuapp.com/services')
+        fetch('https://hero-rider-server-production.up.railway.app/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
