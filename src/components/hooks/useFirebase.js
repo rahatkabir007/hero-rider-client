@@ -56,7 +56,7 @@ const useFirebase = () => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                fetch(`https://hero-rider-server-production.up.railway.app/users/${email}`)
+                fetch(`https://hero-rider-server.vercel.app/users/${email}`)
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
@@ -118,7 +118,7 @@ const useFirebase = () => {
     }
 
     const saveUser = (data, method) => {
-        fetch('https://hero-rider-server-production.up.railway.app/users', {
+        fetch('https://hero-rider-server.vercel.app/users', {
             method: method,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -128,7 +128,7 @@ const useFirebase = () => {
     }
     // check admin or not
     useEffect(() => {
-        fetch(`https://hero-rider-server-production.up.railway.app/savedUsers/${user?.email}`)
+        fetch(`https://hero-rider-server.vercel.app/savedUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin)

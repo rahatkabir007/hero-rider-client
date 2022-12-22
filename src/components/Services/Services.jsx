@@ -10,18 +10,20 @@ const Services = () => {
     const [learner, setLearner] = useState({});
 
     useEffect(() => {
-        fetch(`https://hero-rider-server-production.up.railway.app/savedUsers/${user?.email}`)
+        fetch(`https://hero-rider-server.vercel.app/savedUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setLearner(data)
             })
     },
-        [])
+        [user?.email])
 
     useEffect(() => {
-        fetch('https://hero-rider-server-production.up.railway.app/services')
+        fetch('https://hero-rider-server.vercel.app/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setServices(data)
+            })
     }, [])
     if (services.length <= 0) {
         return <div className="w-25 mx-auto text-center"><Spinner className="my-5 " animation="border" variant="success" /></div>

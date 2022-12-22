@@ -5,7 +5,7 @@ const RiderProfile = () => {
     const [rider, setRider] = useState({});
 
     useEffect(() => {
-        fetch(`https://hero-rider-server-production.up.railway.app/users/${user?.email}`)
+        fetch(`https://hero-rider-server.vercel.app/users/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

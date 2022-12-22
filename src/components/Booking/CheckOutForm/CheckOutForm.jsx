@@ -14,7 +14,7 @@ const CheckOutForm = ({ serviceDetails }) => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch('https://hero-rider-server-production.up.railway.app/create-checkout-session', {
+        fetch('https://hero-rider-server.vercel.app/create-checkout-session', {
             method: 'POST',
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ price })
@@ -77,7 +77,7 @@ const CheckOutForm = ({ serviceDetails }) => {
                 last4: paymentMethod.card.last4,
                 transaction: paymentIntent.client_secret.slice('_secret')[0]
             }
-            const url = `https://hero-rider-server-production.up.railway.app/services/${_id}`;
+            const url = `https://hero-rider-server.vercel.app/services/${_id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {

@@ -13,7 +13,7 @@ const AdminPanel = () => {
     const size = 10;
 
     useEffect(() => {
-        fetch(`https://hero-rider-server-production.up.railway.app/allUser?page=${page}&&size=${size}`)
+        fetch(`https://hero-rider-server.vercel.app/allUser?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setAllUsers(data.result)
@@ -59,12 +59,12 @@ const AdminPanel = () => {
     const [operator, setOperator] = useState({});
 
     const handleCheck = (id) => {
-        fetch(`https://hero-rider-server-production.up.railway.app/allUser/${id}`)
+        fetch(`https://hero-rider-server.vercel.app/allUser/${id}`)
             .then((res) => res.json())
             .then((data) => setOperator(data));
         setOperator(operator.status = "blocked");
 
-        fetch(`https://hero-rider-server-production.up.railway.app/allUser/${id}`, {
+        fetch(`https://hero-rider-server.vercel.app/allUser/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(operator),
