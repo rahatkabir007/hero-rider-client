@@ -11,7 +11,7 @@ const Booking = () => {
     const { serviceId } = useParams();
 
     useEffect(() => {
-        fetch(`https://hero-rider-server.vercel.app/selectedservice/${serviceId}`)
+        fetch(`https://hero-rider.onrender.com/selectedservice/${serviceId}`)
             .then(res => res.json())
             .then(data => setserviceDetails(data));
     }, [serviceId])
