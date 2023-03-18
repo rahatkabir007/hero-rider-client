@@ -10,16 +10,15 @@ const Services = () => {
     const [learner, setLearner] = useState({});
 
     useEffect(() => {
-        fetch(`https://hero-rider.onrender.com/savedUsers/${user?.email}`)
+        fetch(`https://hero-rider-server.vercel.app/savedUsers/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setLearner(data)
             })
-    },
-        [])
+    }, [user?.email])
 
     useEffect(() => {
-        fetch('https://hero-rider.onrender.com/services')
+        fetch('https://hero-rider-server.vercel.app/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data)
